@@ -1,9 +1,18 @@
 import { NextRequest } from "next/server";
 
-export async function GET(request: NextRequest, { params }) {
-  const { id } = params;
-
+export async function GET(request: NextRequest): Promise<Response> {
   try {
+    const url = new URL(request.url);
+    const parts = url.pathname.split("/"); // ['','api','getUsernameById','123']
+    const id = parts[parts.length - 1];
+
+    if (!id) {
+      return new Response(JSON.stringify({ error: "ID not found" }), {
+        status: 400,
+        headers: { "Content-Type": "application/json" },
+      });
+    }
+
     const res = await fetch(
       `https://686213cb96f0cc4e34b83a3f.mockapi.io/api/v1/users/${id}`,
       {
