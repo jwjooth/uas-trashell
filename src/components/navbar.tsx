@@ -29,7 +29,7 @@ const Navbar = () => {
   }, []);
   useEffect(() => {
     if (!userId) return;
-    fetch(/api/getUsernameById/${userId})
+    fetch(`/api/getUsernameById/${userId}`)
       .then((res) => res.json())
       .then((data) => {
         setUserName(data.nama);
@@ -63,12 +63,12 @@ const Navbar = () => {
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter" && search.trim() !== "") {
-      router.push(/home?name=${encodeURIComponent(search.trim())});
+      router.push(`/home?name=${encodeURIComponent(search.trim())}`);
     }
   };
 
   const handleCategoryClick = (kategori: string) => {
-    router.push(/home?category=${encodeURIComponent(kategori)});
+    router.push(`/home?category=${encodeURIComponent(kategori)}`);
   };
 
   function stringToColor(string: string) {
@@ -84,7 +84,7 @@ const Navbar = () => {
 
     for (i = 0; i < 3; i += 1) {
       const value = (hash >> (i * 8)) & 0xff;
-      color += 00${value.toString(16)}.slice(-2);
+      color += (`00${value.toString(16)}`).slice(-2);
     }
     /* eslint-enable no-bitwise */
 
@@ -96,7 +96,7 @@ const Navbar = () => {
       sx: {
         bgcolor: stringToColor(name),
       },
-      children: ${name.split(" ")[0][0]},
+      children: name.split(" ")[0][0],
     };
   }
   return (
