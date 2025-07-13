@@ -62,11 +62,13 @@ const Navbar = () => {
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter" && search.trim() !== "") {
       router.push(`/?name=${encodeURIComponent(search.trim())}`);
+      // router.push(/home?name=${encodeURIComponent(search.trim())});
     }
   };
 
   const handleCategoryClick = (kategori: string) => {
     router.push(`/?category=${encodeURIComponent(kategori)}`);
+    //router.push(/home?category=${encodeURIComponent(kategori)});
   };
   
   function stringToColor(string: string) {
