@@ -20,7 +20,7 @@ const Logincomp = () => {
     } else if (state?.success && state?.role === "pembeli") {
       router.push("/home");
     }
-  }, [state?.success, roleUser]);
+  }, [state]); // hanya pantau 'state'
 
   return (
     <div className="min-h-screen grid grid-cols-1 lg:grid-cols-2">
@@ -51,21 +51,21 @@ const Logincomp = () => {
               defaultValue={String((state?.formData as any)?.email ?? '')}
             />
             <InputPasswordComp
-  label="Password"
-  id="password"
-  placeholder="Password minimal 8 karakter"
-  name="password"
-  error={
-    state?.errors && 'password' in state.errors
-      ? (state.errors as { password?: string[] }).password
-      : undefined
-  }
-  defaultValue={
-    'password' in (state?.formData || {})
-      ? String((state?.formData as { password?: string[] }).password ?? '')
-      : ''
-  }
-/>
+              label="Password"
+              id="password"
+              placeholder="Password minimal 8 karakter"
+              name="password"
+              error={
+                state?.errors && 'password' in state.errors
+                  ? (state.errors as { password?: string[] }).password
+                  : undefined
+              }
+              defaultValue={
+                'password' in (state?.formData || {})
+                  ? String((state?.formData as { password?: string[] }).password ?? '')
+                  : ''
+              }
+            />
             <ButtonSubmitComp label="Masuk" />
           </form>
 
