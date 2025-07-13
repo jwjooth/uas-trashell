@@ -1,10 +1,17 @@
 import { NextRequest } from "next/server";
 
+// Buat type context manual sesuai dengan struktur params
+type Context = {
+  params: {
+    id: string;
+  };
+};
+
 export async function GET(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  context: Context
 ): Promise<Response> {
-  const { id } = params;
+  const { id } = context.params;
 
   try {
     const res = await fetch(
