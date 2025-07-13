@@ -1,11 +1,10 @@
 import { NextRequest } from "next/server";
-import type { NextResponse } from "next/server";
 
 export async function GET(
   request: NextRequest,
-  context: { params: { id: string } }
+  { params }: { params: { id: string } }
 ): Promise<Response> {
-  const { id } = context.params;
+  const { id } = params;
 
   try {
     const res = await fetch(
