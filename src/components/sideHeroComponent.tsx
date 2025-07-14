@@ -1,12 +1,19 @@
+"use client";
+import Image from "next/image";
+
 const SideHeroComp = () => {
     return (
-        <div className="bg-gradient-to-br from-[#0F172A] via-[#3B82F6] to-[#F9FAFB] lg:flex items-center justify-center p-8 hidden">
-            <div className="w-full max-w-md h-96 bg-black/30 backdrop-blur-sm rounded-2xl border border-white/20 lg:flex items-center justify-center hidden">
-                <p className="text-white text-lg text-center opacity-80 px-6">
-                    Area untuk gambar atau element visual Anda
-                </p>
-            </div>
+        <div className="lg:flex items-center justify-center p-8 hidden bg-gradient-to-br from-[rgb(98,144,235)] via-[#e0e3e9] to-[#3a8dc4] min-h-screen">
+                <Image
+                    src="/trashell2.png"
+                    alt="Trashell Logo"
+                    width={500}
+                    height={500}
+                    className="mb-4 drop-shadow-zinc-500 saturate-150 contrast-200"
+                    priority
+                />
         </div>
     );
-}
+};
+
 export default SideHeroComp;

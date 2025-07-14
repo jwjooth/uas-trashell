@@ -67,7 +67,6 @@ export default function HomeClient() {
                 <div className="text-left text-md md:text-xl font-bold mb-6">
                     Pilihan Produk Untukmu
                 </div>
-
                 <ProductList items={products} hasSearched={!!name || !!category} />
             </div>
 
